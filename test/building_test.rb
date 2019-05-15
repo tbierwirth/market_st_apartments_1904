@@ -16,4 +16,11 @@ class RenterTest < Minitest::Test
     assert_instance_of Building, @building
   end
 
+  def test_for_adding_units
+    assert_equal [], @building.units
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+    assert_equal [@a1, @b2], @building.units
+  end
+
 end
