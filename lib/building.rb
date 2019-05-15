@@ -34,16 +34,19 @@ class Building
     highest_renter[0]
   end
 
-  # def renter_with_highest_rent
-  #   highest_renter = []
-  #   @units.max_by do |unit|
-  #     if unit.renter != nil
-  #       unit.monthly_rent
-  #       highest_renter.push(unit.renter)
-  #       # binding.pry
-  #     end
-  #   end
-  #   highest_renter
-  # end
+  def annual_breakdown
+    breakdown = Hash.new
+    @units.each do |unit|
+      if unit.renter != nil
+        breakdown = {
+          # renter: unit.renter.name,
+          # annual_rent: unit.monthly_rent * 12
+          renter: unit.renter.name,
+          annual_rent: unit.monthly_rent * 12
+        }
+      end
+    end
+    breakdown
+  end
 
 end
