@@ -1,3 +1,4 @@
+require 'pry'
 class Building
   attr_accessor :units
 
@@ -17,5 +18,32 @@ class Building
     end
     total_rent / @units.length
   end
+
+  def renter_with_highest_rent
+    units_with_renter = []
+    highest_renter = []
+    @units.each do |unit|
+      if unit.renter != nil
+        units_with_renter.push(unit)
+      end
+    end
+    units_with_renter.max_by do |unit|
+      unit.monthly_rent
+      highest_renter.push(unit.renter)
+    end
+    highest_renter[0]
+  end
+
+  # def renter_with_highest_rent
+  #   highest_renter = []
+  #   @units.max_by do |unit|
+  #     if unit.renter != nil
+  #       unit.monthly_rent
+  #       highest_renter.push(unit.renter)
+  #       # binding.pry
+  #     end
+  #   end
+  #   highest_renter
+  # end
 
 end
